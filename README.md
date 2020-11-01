@@ -38,5 +38,5 @@ From Win32/MFC/WinForm/WPF/...to Blazor, I think Blazor is value to try, as thi
 1. hope MobileBlazorBindings support fixed version deploy mode https://github.com/xamarin/MobileBlazorBindings/pull/202
 2. hope webview/webview_csharp can support webview2 fixed version deploy mode https://github.com/webview/webview_csharp/issues/4 https://github.com/webview/webview/issues/493
 3. some talk from v2ex.com https://s.v2ex.com/t/720460
-4. maybe slove the problem of https://github.com/webview/webview_csharp/issues/4
+4. maybe solve the problem of https://github.com/webview/webview_csharp/issues/4
 5. a very promise blazor UI libray https://github.com/ant-design-blazor/ant-design-blazor
