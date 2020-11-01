@@ -4,10 +4,10 @@ Find a solution to mix the best part of .net for desktop application
 
 1. Work with dotnet and get all the benefits of its improvement like
 
-    1. The best c# language
-    2. The great Dotnet Framework Library
-    3. SingleFile Deploy mode
-    4. Cross platform
+    1. The best c# language
+    2. The great Dotnet Framework Library
+    3. SingleFile Deploy mode
+    4. Cross platform
 
 2. Use asp.net's modern UI technology like Blazor to release the productivity for frontend development
 3. Easily cross-platform, support Windows/Linux/Mac OSX seamlessly
