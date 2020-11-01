@@ -57,7 +57,7 @@ namespace BlazorBrowserNativeStyle
             using var webview = new Webview();
 
             webview
-                .SetTitle($"Hello Asp.Net Blazor Server In Progress of {address}")
+                .SetTitle($"Hello Asp.Net Blazor Server In Process of {address}")
                 .Navigate(new UrlContent(address))
                 .Run();
         }
