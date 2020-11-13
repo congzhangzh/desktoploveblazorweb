@@ -59,10 +59,9 @@ namespace BlazorBrowserNativeStyle
         }
 
         public static void OpenInLine(string address)
-        {
-            var exeFile = Assembly.GetEntryAssembly().Location;
+        {          
             var selfIncludeWebView2DirName = "WebView2";
-            var selfIncludeWebView2FullDirPath = Path.Combine(Path.GetDirectoryName(exeFile), selfIncludeWebView2DirName);
+            var selfIncludeWebView2FullDirPath = Path.Combine(System.AppContext.BaseDirectory, selfIncludeWebView2DirName);
 
             new System.Windows.Application().Run(
                 new System.Windows.Window
