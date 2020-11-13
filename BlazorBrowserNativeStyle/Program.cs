@@ -21,7 +21,13 @@ namespace BlazorBrowserNativeStyle
     public class Program
     {
         [STAThread]
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
+        {
+            System.Threading.SynchronizationContext.SetSynchronizationContext(new System.Windows.Threading.DispatcherSynchronizationContext());
+            MainAsync(args).Wait();
+        }
+
+        public static async Task MainAsync(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
             var applicationLifetime = host.Services.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
@@ -44,22 +50,33 @@ namespace BlazorBrowserNativeStyle
             }, futureAddr);
 
             //[Special for DesktopLoveBlazorWeb]
-            #pragma warning disable CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
+            #pragma warning disable CS4014 
             host.RunAsync();
-            #pragma warning restore CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
-
+            #pragma warning restore CS4014 
+            
             //[Special for DesktopLoveBlazorWeb]
             OpenInLine(await futureAddr.Task);
         }
 
         public static void OpenInLine(string address)
         {
-            using var webview = new Webview();
+            var exeFile = Assembly.GetEntryAssembly().Location;
+            var selfIncludeWebView2DirName = "WebView2";
+            var selfIncludeWebView2FullDirPath = Path.Combine(Path.GetDirectoryName(exeFile), selfIncludeWebView2DirName);
 
-            webview
-                .SetTitle($"Hello Asp.Net Blazor Server In Process of {address}")
-                .Navigate(new UrlContent(address))
-                .Run();
+            new System.Windows.Application().Run(
+                new System.Windows.Window
+                {
+                    Content = new WebView2
+                    {
+                        CreationProperties = new CoreWebView2CreationProperties
+                        {
+                            BrowserExecutableFolder = Directory.Exists(selfIncludeWebView2FullDirPath) ? selfIncludeWebView2FullDirPath: null
+                        },
+                        Source = new Uri(address)
+                    }
+                }
+            );
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
