@@ -11,4 +11,10 @@
     <PackageReference Include="SharpWebview" Version="0.6.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
 </Project>
