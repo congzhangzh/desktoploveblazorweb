@@ -44,9 +44,9 @@ namespace BlazorBrowserNativeStyle
             }, futureAddr);
 
             //[Special for DesktopLoveBlazorWeb]
-            #pragma warning disable CS4014 // ÓÉÓÚ´Ëµ÷ÓÃ²»»áµÈ´ý£¬Òò´ËÔÚµ÷ÓÃÍê³ÉÇ°½«¼ÌÐøÖ´ÐÐµ±Ç°·½·¨
+            #pragma warning disable CS4014 // ï¿½ï¿½ï¿½Ú´Ëµï¿½ï¿½Ã²ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ðµï¿½Ç°ï¿½ï¿½ï¿½ï¿½
             host.RunAsync();
-            #pragma warning restore CS4014 // ÓÉÓÚ´Ëµ÷ÓÃ²»»áµÈ´ý£¬Òò´ËÔÚµ÷ÓÃÍê³ÉÇ°½«¼ÌÐøÖ´ÐÐµ±Ç°·½·¨
+            #pragma warning restore CS4014 // ï¿½ï¿½ï¿½Ú´Ëµï¿½ï¿½Ã²ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ðµï¿½Ç°ï¿½ï¿½ï¿½ï¿½
 
             //[Special for DesktopLoveBlazorWeb]
             OpenInLine(await futureAddr.Task);
@@ -54,12 +54,16 @@ namespace BlazorBrowserNativeStyle
 
         public static void OpenInLine(string address)
         {
-            using var webview = new Webview();
-
-            webview
-                .SetTitle($"Hello Asp.Net Blazor Server In Process of {address}")
-                .Navigate(new UrlContent(address))
-                .Run();
+            Console.WriteLine($"Try to view blazor application on {address}");
+            using(var webview = new Webview())
+            {
+                webview
+                    .SetTitle("Blazor in webview_csharp")             
+                    .SetSize(1024, 768, WebviewHint.None)
+                    .SetSize(800, 600, WebviewHint.Min)
+                    .Navigate(new UrlContent(address))
+                    .Run();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
