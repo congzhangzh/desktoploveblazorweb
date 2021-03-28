@@ -41,3 +41,6 @@ From Win32/MFC/WinForm/WPF/...to Blazor, I think Blazor is value to try, as thi
 3. some talk from v2ex.com https://s.v2ex.com/t/720460
 4. maybe solve the problem of https://github.com/webview/webview_csharp/issues/4
 5. a very promise blazor UI libray https://github.com/ant-design-blazor/ant-design-blazor
+6. chromium base edge will be part of windows https://techcommunity.microsoft.com/t5/microsoft-365-blog/new-microsoft-edge-to-replace-microsoft-edge-legacy-with-april-s/ba-p/2114224
+7. reddit talk https://www.reddit.com/r/Blazor/comments/lw9prg/will_you_use_net_blazor_for_desktop_application/
+8. awesome balzor https://github.com/AdrienTorris/awesome-blazor
