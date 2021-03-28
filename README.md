@@ -14,6 +14,10 @@ Find a solution to mix the best part of .net for desktop application
 4. Support hotkey to bring up/minimum on windows[TODO]
 5. Publish as a dotnet new template to easy use by other people[TODO]
 
+# Background
+
+My teams are all C# boys, we want to use web technology and migration some old style internal desktop application which develop by MFC/WINFORM/WPF, we can not simple use webassembly and PWA, as these software is really desktop style, and pack and run on customer computer, we can not deliver it by webserver/CDN and so on.
+
 # The struct of the application
 
 1. asp.net run in the process
@@ -44,3 +48,4 @@ From Win32/MFC/WinForm/WPF/...to Blazor, I think Blazor is value to try, as thi
 6. chromium base edge will be part of windows https://techcommunity.microsoft.com/t5/microsoft-365-blog/new-microsoft-edge-to-replace-microsoft-edge-legacy-with-april-s/ba-p/2114224
 7. reddit talk https://www.reddit.com/r/Blazor/comments/lw9prg/will_you_use_net_blazor_for_desktop_application/
 8. awesome balzor https://github.com/AdrienTorris/awesome-blazor
+9. awesome dotnet core https://github.com/thangchung/awesome-dotnet-core
