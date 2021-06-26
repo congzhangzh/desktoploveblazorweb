@@ -21,7 +21,12 @@ namespace BlazorBrowserNativeStyle
     public class Program
     {
         [STAThread]
-        public static async Task Main(string[] args)
+        public static int Main(string[] args)
+        {
+            return MainImpl(args).Result;
+        }
+        
+        public static async Task<int> MainImpl(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
             var applicationLifetime = host.Services.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
@@ -50,6 +55,9 @@ namespace BlazorBrowserNativeStyle
 
             //[Special for DesktopLoveBlazorWeb]
             OpenInLine(await futureAddr.Task);
+            
+            //TODO
+            return 0;
         }
 
         public static void OpenInLine(string address)
