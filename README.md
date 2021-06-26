@@ -21,11 +21,16 @@ My teams are all C# boys, we want to use web technology and migration some old s
 # The struct of the application
 
 1. asp.net run in the process
-2. in process browser to show the server content(use https://github.com/webview/webview_csharp)
+2. in process browser to show the server content
+    1. [Photino/WebWindows][prefer] (use https://github.com/tryphotino/photino.NET)
+    2. [webview] (use https://github.com/webview/webview_csharp)
+
 
 # A Demo
 
 ![](desktoploveblazorweb.gif)
+
+![](blazor_with_photino_NET.png)
 
 # Why
 
