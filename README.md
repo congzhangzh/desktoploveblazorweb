@@ -11,8 +11,8 @@ Find a solution to mix the best part of .net for desktop application
 
 2. Use asp.net's modern UI technology like Blazor to release the productivity for frontend development
 3. Easily cross-platform, support Windows/Linux/Mac OSX seamlessly
-4. Support hotkey to bring up/minimum on windows[TODO]
-5. Publish as a dotnet new template to easy use by other people[TODO]
+4. Follow upstream of [photino.NET](https://github.com/tryphotino/photino.NET)
+5. Focus on Latest Blazor&Dotnet version
 
 # Background
 
