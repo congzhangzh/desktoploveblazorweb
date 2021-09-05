@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Photino.NET" Version="1.1.6" />
+    <PackageReference Include="Photino.NET" Version="2.0.11" />
   </ItemGroup>
 
   <ItemGroup>
