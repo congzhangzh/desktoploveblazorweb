@@ -63,69 +63,13 @@ namespace BlazorBrowserNativeStyle
         public static void OpenInLine(string address)
         {
             Console.WriteLine($"Try to view blazor application on {address}");
-            /*using(var webview = new Webview())
-            {
-                webview
-                    .SetTitle("Blazor in webview_csharp")             
-                    .SetSize(1024, 768, WebviewHint.None)
-                    .SetSize(800, 600, WebviewHint.Min)
-                    .Navigate(new UrlContent(address))
-                    .Run();
-            }*/
-                    {
-            // Window title declared here for visibility
-            string windowTitle = "Photino for .NET Demo App";
+            string windowTitle = "Cross Desktop Love Blazor Web";
 
-            // Define the PhotinoWindow options. Some handlers 
-            // can only be registered before a PhotinoWindow instance
-            // is initialized. Currently there are three handlers
-            // that must be defined here.
-            Action<PhotinoWindowOptions> windowConfiguration = options =>
-            {
-                // Custom scheme handlers can only be registered during
-                // initialization of a PhotinoWindow instance.
-                options.CustomSchemeHandlers.Add("app", (string url, out string contentType) =>
-                {
-                    contentType = "text/javascript";
-                    return new MemoryStream(Encoding.UTF8.GetBytes(@"
-                        (() =>{
-                            window.setTimeout(() => {
-                                alert(`🎉 Dynamically inserted JavaScript.`);
-                            }, 1000);
-                        })();
-                    "));
-                });
-
-                // Window creating and created handlers can only be
-                // registered during initialization of a PhotinoWindow instance.
-                // These handlers are fired before and after the native constructor
-                // method is called.
-                options.WindowCreatingHandler += (object sender, EventArgs args) =>
-                {
-                    var window = (PhotinoWindow)sender; // Instance is not initialized at this point. Class properties are not set yet.
-                    Console.WriteLine($"Creating new PhotinoWindow instance.");
-                };
-
-                options.WindowCreatedHandler += (object sender, EventArgs args) =>
-                {
-                    var window = (PhotinoWindow)sender; // Instance is initialized. Class properties are now set and can be used.
-                    Console.WriteLine($"Created new PhotinoWindow instance with title {window.Title}.");
-                };
-            };
-
-            // Creating a new PhotinoWindow instance with the fluent API
-            var window = new PhotinoWindow(windowTitle, windowConfiguration)
-                // Resize to a percentage of the main monitor work area
-                .Resize(50, 50, "%")
-                // Center window in the middle of the screen
+            var window = new PhotinoWindow()
+                .SetTitle(windowTitle)
+                .SetSize(1024, 768)
+                .SetResizable(true)
                 .Center()
-                // Users can resize windows by default.
-                // Let's make this one fixed instead.
-                .UserCanResize(false)
-                // Most event handlers can be registered after the
-                // PhotinoWindow was instantiated by calling a registration 
-                // method like the following RegisterWebMessageReceivedHandler.
-                // This could be added in the PhotinoWindowOptions if preferred.
                 .RegisterWebMessageReceivedHandler((object sender, string message) =>
                 {
                     var window = (PhotinoWindow) sender;
@@ -137,11 +81,32 @@ namespace BlazorBrowserNativeStyle
                     // Send a message back the to JavaScript event handler.
                     // "window.external.receiveMessage(callback: Function)"
                     window.SendWebMessage(response);
+                }) 
+                .RegisterCustomSchemeHandler("app", (object sender, string scheme, string url, out string contentType) =>
+                {
+                    contentType = "text/javascript";
+                    Console.WriteLine($"Received custom scheme request: {scheme} {url}");
+                    return new MemoryStream(Encoding.UTF8.GetBytes(@"
+                        (() =>{
+                            window.setTimeout(() => {
+                                alert(`🎉 Dynamically inserted JavaScript.`);
+                            }, 1000);
+                        })();
+                    "));
                 })
-                //.Load("wwwroot/index.html"); // Can be used with relative path strings or "new URI()" instance to load a website.
-                .Load(address);
+                .RegisterWindowCreatingHandler((object sender, EventArgs args) =>
+                {
+                    var window = (PhotinoWindow)sender; // Instance is not initialized at this point. Class properties are not set yet.
+                    Console.WriteLine($"Creating new PhotinoWindow instance.");
+                })
+                .RegisterWindowCreatedHandler((object sender, EventArgs args) =>
+                {
+                    var window = (PhotinoWindow)sender; // Instance is initialized. Class properties are now set and can be used.
+                    Console.WriteLine($"Created new PhotinoWindow instance with title {window.Title}.");
+                });
+
+            window.Load(address);
             window.WaitForClose(); // Starts the application event loop
-        }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
