@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <StartupObject>BlazorBrowserNativeStyle.Program</StartupObject>
     <UserSecretsId>ae60eaf7-ac53-4469-b861-e493da2e3d6e</UserSecretsId>
