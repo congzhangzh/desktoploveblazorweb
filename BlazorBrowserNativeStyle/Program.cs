@@ -67,6 +67,7 @@ namespace BlazorBrowserNativeStyle
 
             var window = new PhotinoWindow()
                 .SetTitle(windowTitle)
+                .SetUseOsDefaultSize(false)
                 .SetSize(1024, 768)
                 .SetResizable(true)
                 .Center()
